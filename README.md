@@ -1,5 +1,9 @@
 # overkill
 
+<p align="center">
+  <img src="assets/social-preview.png" alt="overkill — stop paying Opus to fix your typos" width="100%">
+</p>
+
 **Stop paying Opus to fix your typos.**
 
 `overkill` is a model router for [Claude Code](https://claude.com/claude-code). It runs a
