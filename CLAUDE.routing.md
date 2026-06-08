@@ -23,7 +23,12 @@ Mechanical work where a mistake is immediately visible and self-correcting:
 - simple, well-documented API calls
 - file lookups, "where is X", reading a value
 
-If it's trivial and self-verifying, hand it to `quick`.
+If it's trivial and self-verifying, hand it to `quick` — **but mind the overhead.**
+Delegating spawns a fresh subagent context: real latency, no cache carryover from this
+session. For a *single* tiny edit, doing it yourself on Sonnet is faster than spawning
+Haiku. `quick` earns its cost on **volume** — a batch of mechanical edits, or a long
+repetitive grind. Rule of thumb: delegate down only when the work is trivial *and* big
+enough that Haiku's speed/cost win clears the spawn overhead. One-liners stay on Sonnet.
 
 ### Delegate up to `deep-work` (Opus) — *reactively*
 Do **not** try to predict difficulty perfectly up front. Difficulty is usually only
@@ -40,6 +45,11 @@ reveals itself as hard.** Escalate when you notice any of:
 The trigger is **discovered difficulty and low confidence, not a keyword.** A task that
 looked trivial but hides a hard problem goes up; a task with scary words that's actually
 mechanical does not.
+
+Subagent spawn overhead applies here too, but it's almost always worth paying for hard
+work — the cost of a subtly-wrong answer dominates the spawn cost. (This is the inverse
+of the `quick` tier, where the overhead can *exceed* the savings.) So the asymmetry runs
+both ways: escalate up freely; delegate down only at volume.
 
 ### When NOT to delegate up — recommend a session switch instead
 Subagents run to completion in isolation — you can't steer them mid-stream. So
