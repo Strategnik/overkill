@@ -124,6 +124,11 @@ where model is a per-request parameter and your script owns the routing logic. T
 proxy/wrapper, not a config drop-in — more power, more to maintain. For most people, the
 config approach here is the right altitude.
 
+If you do want to build it properly, **[AGENT.md](AGENT.md)** explains the design — why
+the elegant pattern is *reactive escalation gated by a cheap verifier* rather than upfront
+classification — and **[`sdk/escalating_agent.py`](sdk/escalating_agent.py)** is a runnable
+reference sketch.
+
 ## License
 
 MIT
