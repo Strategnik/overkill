@@ -42,11 +42,11 @@ if "model" in data:
     print(f'• settings.json already pins "model": "{data["model"]}" — left as-is. '
           f'Change to "sonnet" manually if you want the router default.')
 else:
-    data["model"] = "sonnet"
+    data["model"] = "claude-sonnet-4-6"
     with open(path, "w") as f:
         json.dump(data, f, indent=2)
         f.write("\n")
-    print('✓ Set "model": "sonnet" as session default')
+    print('✓ Set "model": "claude-sonnet-4-6" as session default')
 PY
 
 # 3. Routing rubric in CLAUDE.md ----------------------------------------------

@@ -83,22 +83,23 @@ cd claude-model-router
 
 The installer:
 - copies `deep-work` and `quick` into `~/.claude/agents/`
-- sets `"model": "sonnet"` as your default (only if you haven't already chosen one)
+- sets the pinned Sonnet (`claude-sonnet-4-6`) as your default (only if you haven't already chosen one)
 - appends the routing rubric to `~/.claude/CLAUDE.md` (idempotent, marker-guarded, backs up first)
 
 Then start a new session. Honors `$CLAUDE_CONFIG_DIR` if you keep config elsewhere.
 
 ### Manual install
 1. Copy `agents/*.md` → `~/.claude/agents/`
-2. Add `"model": "sonnet"` to `~/.claude/settings.json`
+2. Add `"model": "claude-sonnet-4-6"` to `~/.claude/settings.json`
 3. Paste `CLAUDE.routing.md` into `~/.claude/CLAUDE.md`
 
 ## Customize
 
-- **Swap models** in the `model:` frontmatter of `agents/*.md`. This repo ships **model
-  aliases** (`opus`, `haiku`) so forks auto-track the latest version. To pin a specific
-  version for reproducibility, use a full ID (e.g. `claude-opus-4-8`) — just know it
-  won't follow future releases until you bump it.
+- **Swap models** in the `model:` frontmatter of `agents/*.md`. This repo **pins specific
+  tested versions** (full model IDs), not floating aliases — deliberate model choice is
+  the whole point, so a new release never silently takes over a tier. See
+  [MODELS.md](MODELS.md) for the current pins and the upgrade ritual to run when a new
+  model ships.
   - ⚠️ Gotcha: the `CLAUDE_CODE_SUBAGENT_MODEL` env var, if set, **overrides every
     subagent's `model:` frontmatter** globally. Unset it for this routing to work.
 - **Change the default floor** in `settings.json` — e.g. main-on-Opus with downward
