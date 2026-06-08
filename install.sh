@@ -52,8 +52,8 @@ PY
 # 3. Routing rubric in CLAUDE.md ----------------------------------------------
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
 RUBRIC_SRC="$REPO_DIR/CLAUDE.routing.md"
-START="<!-- BEGIN claude-model-router -->"
-END="<!-- END claude-model-router -->"
+START="<!-- BEGIN overkill -->"
+END="<!-- END overkill -->"
 
 if [ -f "$CLAUDE_MD" ] && grep -qF "$START" "$CLAUDE_MD"; then
   echo "• Routing rubric already present in CLAUDE.md — skipped (edit between the markers to update)."

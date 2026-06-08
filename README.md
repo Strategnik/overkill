@@ -1,8 +1,11 @@
-# claude-model-router
+# overkill
 
-A **three-tier model strategy** for [Claude Code](https://claude.com/claude-code): run a
-cheap, capable model by default and let it route work up or down by difficulty — so you
-spend Opus dollars on the algorithm, not the headline.
+**Stop paying Opus to fix your typos.**
+
+`overkill` is a model router for [Claude Code](https://claude.com/claude-code). It runs a
+cheap, capable model by default, judges each task as it reads it, and escalates to a more
+powerful model only when the work warrants it — so your spend tracks the difficulty of
+the problem, not a flat top-tier rate.
 
 Set once in `~/.claude/`, inherited by every project, overridable per repo. No proxy, no
 extra service — just config.
@@ -76,8 +79,8 @@ handles sealed hard tasks; it can't make a subagent feel interactive.
 ## Install
 
 ```bash
-git clone https://github.com/Strategnik/claude-model-router.git
-cd claude-model-router
+git clone https://github.com/Strategnik/overkill.git
+cd overkill
 ./install.sh
 ```
 
@@ -104,7 +107,7 @@ Then start a new session. Honors `$CLAUDE_CONFIG_DIR` if you keep config elsewhe
     subagent's `model:` frontmatter** globally. Unset it for this routing to work.
 - **Change the default floor** in `settings.json` — e.g. main-on-Opus with downward
   delegation if you'd rather have a smarter router and accept a higher base cost.
-- **Tune the rules** between the `<!-- BEGIN/END claude-model-router -->` markers in your
+- **Tune the rules** between the `<!-- BEGIN/END overkill -->` markers in your
   `CLAUDE.md`.
 - **Override per project** by dropping a `.claude/settings.json` in any repo — it beats
   the user-level default.
